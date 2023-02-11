@@ -1,9 +1,20 @@
 package com.kameleoon.quotesmanager.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 
+import java.util.Date;
 import java.util.List;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
 @Entity
 @Table(name = "users")
 public class User {
@@ -11,14 +22,27 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "username")
     private String username;
 
+    @Email
+    @Column(name = "email")
     private String email;
 
+    @Column(name = "password")
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Quote> quotes;
+
+    @CreatedDate
+    private Date createdAt;
+
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<Quote> upVoteQuotes;
+//
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<Quote> downVoteQuotes;
 
     public Long getId() {
         return id;
