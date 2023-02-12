@@ -9,35 +9,20 @@ import java.util.List;
 import java.util.Random;
 
 @Service
-public class QuoteService {
-    private final static Random RANDOMIZER = new Random();
-    @Autowired
-    QuoteRepository quoteRepository;
+public interface QuoteService {
 
-    public Quote createQuote(Quote quote) {
-        return quoteRepository.save(quote);
-    }
+    Quote createQuote(Quote quote);
 
-    public List<Quote> getAllQuotes() {
-        return quoteRepository.findAll();
-    }
+    List<Quote> getAllQuotes();
 
-    public Quote getRandomQuote() {
-        return getQuoteById(nextLong(1, quoteRepository.count() + 1));
-    }
-    public Quote getQuoteById(Long id) {
-        return quoteRepository.getReferenceById(id);
-    }
+    Quote getRandomQuote();
+    Quote getQuoteById(Long id);
 
-    public Quote updateQuote(Quote quote) {
-        return quoteRepository.save(quote);
-    }
+    Quote updateQuote(Quote quote);
 
-    public void deleteQuote(Long id) {
-        quoteRepository.deleteById(id);
-    }
+    void deleteQuoteById(Long id);
 
-    private long nextLong(long lowerRange, long upperRange) {
-        return (long)(RANDOMIZER.nextDouble() * (upperRange - lowerRange)) + lowerRange;
-    }
+    List<Quote> getTop10();
+//    Select Count(*), Topic,isLike FROM LikesDislikes GROUP BY Topic,isLike
+//SELECT topic FROM likesdislikes WHERE userName = 'user' AND isLike = true;
 }

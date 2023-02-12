@@ -32,8 +32,11 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
+            mappedBy = "user")
     private List<Quote> quotes;
+
+
 
     @CreatedDate
     private Date createdAt;

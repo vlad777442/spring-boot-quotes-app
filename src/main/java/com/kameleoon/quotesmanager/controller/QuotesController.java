@@ -46,6 +46,10 @@ public class QuotesController {
     }
 
 
+    @GetMapping("/top10")
+    public List<Quote> getTop10() {
+        return quoteService.getTop10();
+    }
 
 
 }

@@ -8,7 +8,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 @Data
 @EqualsAndHashCode
@@ -37,9 +37,9 @@ public class Quote {
     @LastModifiedDate
     private Date updatedAt;
 
-    @ManyToMany
-    private Set<User> upVotedUsers;
-    private Set<User> downVotedUsers;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "quote")
+    private List<Vote> votes;
+
 
 
 }
