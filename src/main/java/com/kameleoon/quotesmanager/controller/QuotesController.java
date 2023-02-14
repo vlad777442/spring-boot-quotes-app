@@ -41,7 +41,7 @@ public class QuotesController {
 
     @DeleteMapping("/{id}")
     public void deleteQuote(@PathVariable Long id) {
-        quoteService.deleteQuote(id);
+        quoteService.deleteQuoteById(id);
 
     }
 
@@ -51,5 +51,9 @@ public class QuotesController {
         return quoteService.getTop10();
     }
 
+    @GetMapping("/flop10")
+    public List<Quote> getFlop10() {
+        return quoteService.getFlop10();
+    }
 
 }

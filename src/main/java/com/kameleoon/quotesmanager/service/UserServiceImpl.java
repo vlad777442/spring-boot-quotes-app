@@ -3,9 +3,11 @@ package com.kameleoon.quotesmanager.service;
 import com.kameleoon.quotesmanager.model.User;
 import com.kameleoon.quotesmanager.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;

@@ -27,6 +27,9 @@ public class Quote {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "quote")
+    private List<Vote> votes;
+
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
@@ -37,8 +40,7 @@ public class Quote {
     @LastModifiedDate
     private Date updatedAt;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "quote")
-    private List<Vote> votes;
+    private Integer rating;
 
 
 

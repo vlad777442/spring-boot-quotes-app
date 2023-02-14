@@ -1,11 +1,11 @@
 package com.kameleoon.quotesmanager.controller;
 
+import com.kameleoon.quotesmanager.model.Quote;
 import com.kameleoon.quotesmanager.model.User;
 import com.kameleoon.quotesmanager.repository.UserRepository;
+import com.kameleoon.quotesmanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -13,15 +13,20 @@ import java.util.List;
 @RequestMapping("/api")
 public class UserController {
     @Autowired
-    UserRepository userRepository;
+    UserService userService;
     @GetMapping("/")
     public String hello() {
-        return "Hello world";
+        return "Welcome to the Quote Application";
     }
 
     @GetMapping("/users")
     List<User> all() {
-        return userRepository.findAll();
+        return userService.getAllUsers();
+    }
+
+    @PostMapping("/")
+    public User createQuote(@RequestBody User user) {
+        return userService.createUser(user);
     }
 
 //    @GetMapping("/users")

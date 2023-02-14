@@ -24,8 +24,10 @@ public class Vote {
     @JoinColumn(name = "quote_id")
     private Quote quote;
 
-    private boolean isUpVote;
+    @Column(name = "VoteType")
+    private Integer value;
 
-    @CreatedDate
-    private Date createdAt;
+
+//    @CreatedDate
+//    private Date createdAt;
 }

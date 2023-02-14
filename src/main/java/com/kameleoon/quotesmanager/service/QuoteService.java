@@ -1,6 +1,7 @@
 package com.kameleoon.quotesmanager.service;
 
 import com.kameleoon.quotesmanager.model.Quote;
+import com.kameleoon.quotesmanager.model.User;
 import com.kameleoon.quotesmanager.repository.QuoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,9 @@ public interface QuoteService {
     void deleteQuoteById(Long id);
 
     List<Quote> getTop10();
-//    Select Count(*), Topic,isLike FROM LikesDislikes GROUP BY Topic,isLike
-//SELECT topic FROM likesdislikes WHERE userName = 'user' AND isLike = true;
+
+    List<Quote> getFlop10();
+
+    Integer getRating(Long id);
+
 }

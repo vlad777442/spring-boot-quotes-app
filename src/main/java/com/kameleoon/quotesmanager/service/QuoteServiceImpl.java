@@ -46,7 +46,25 @@ public class QuoteServiceImpl implements QuoteService{
 
     @Override
     public List<Quote> getTop10() {
-        return null;
+        List<Quote> topQuotes = quoteRepository.findTopQuotes();
+        if (topQuotes.size() > 10) {
+            topQuotes = topQuotes.subList(0, 10);
+        }
+        return topQuotes;
+    }
+
+    @Override
+    public List<Quote> getFlop10() {
+        List<Quote> worstQuotes = quoteRepository.findWorstQuotes();
+        if (worstQuotes.size() > 10) {
+            worstQuotes = worstQuotes.subList(0, 10);
+        }
+        return worstQuotes;
+    }
+
+    @Override
+    public Integer getRating(Long id) {
+        return quoteRepository.getReferenceById(id).getRating();
     }
 
     private long nextLong(long lowerRange, long upperRange) {
