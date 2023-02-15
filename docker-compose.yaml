@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  kameleoon:
+    build: spring-boot-quotes-app
+    image: vlad777442/spring-boot-quotes-app:dockerfile
+    container_name: spring-boot-quotes-app
+    restart: always
+    ports:
+      - "8080:8080"
