@@ -1,18 +1,22 @@
 package com.kameleoon.quotesmanager.model;
 
+import com.kameleoon.quotesmanager.dto.QuoteResponseDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
 @Data
 @EqualsAndHashCode
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "quotes")
 public class Quote {
     @Id
@@ -33,12 +37,12 @@ public class Quote {
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 
     private Integer rating;
 

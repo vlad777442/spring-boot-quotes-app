@@ -24,8 +24,9 @@ public class Vote {
     @JoinColumn(name = "quote_id")
     private Quote quote;
 
-    @Column(name = "VoteType")
-    private Integer value;
+    @Column(name = "vote_type", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private VoteType voteType;
 
 
 //    @CreatedDate

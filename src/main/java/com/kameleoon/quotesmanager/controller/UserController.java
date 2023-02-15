@@ -1,5 +1,7 @@
 package com.kameleoon.quotesmanager.controller;
 
+import com.kameleoon.quotesmanager.dto.UserRequestDTO;
+import com.kameleoon.quotesmanager.dto.UserResponseDTO;
 import com.kameleoon.quotesmanager.model.Quote;
 import com.kameleoon.quotesmanager.model.User;
 import com.kameleoon.quotesmanager.repository.UserRepository;
@@ -10,27 +12,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/users")
 public class UserController {
     @Autowired
     UserService userService;
-    @GetMapping("/")
-    public String hello() {
-        return "Welcome to the Quote Application";
-    }
 
-    @GetMapping("/users")
-    List<User> all() {
-        return userService.getAllUsers();
-    }
 
     @PostMapping("/")
-    public User createQuote(@RequestBody User user) {
+    public UserRequestDTO createUser(@RequestBody UserRequestDTO user) {
         return userService.createUser(user);
     }
 
-//    @GetMapping("/users")
-//    List<User> all() {
-//        return repository.findAll();
-//    }
+
 }

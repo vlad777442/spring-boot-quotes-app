@@ -1,5 +1,7 @@
 package com.kameleoon.quotesmanager.model;
 
+import com.kameleoon.quotesmanager.dto.QuoteResponseDTO;
+import com.kameleoon.quotesmanager.dto.UserResponseDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
@@ -8,6 +10,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -40,9 +43,11 @@ public class User {
     private List<Vote> votes;
 
     @CreatedDate
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
-
+//    public UserResponseDTO toDTO() {
+//        return new UserResponseDTO(id, name, email, createdAt);
+//    }
 
 
 

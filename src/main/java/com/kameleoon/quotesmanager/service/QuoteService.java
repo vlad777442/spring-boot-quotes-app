@@ -1,32 +1,36 @@
 package com.kameleoon.quotesmanager.service;
 
+import com.kameleoon.quotesmanager.dto.QuoteRequestDTO;
+import com.kameleoon.quotesmanager.dto.QuoteResponseDTO;
 import com.kameleoon.quotesmanager.model.Quote;
-import com.kameleoon.quotesmanager.model.User;
-import com.kameleoon.quotesmanager.repository.QuoteRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 
 import java.util.List;
-import java.util.Random;
 
-@Service
+
+
 public interface QuoteService {
 
-    Quote createQuote(Quote quote);
+    QuoteRequestDTO createQuote(Long userId, QuoteRequestDTO quote);
 
-    List<Quote> getAllQuotes();
 
-    Quote getRandomQuote();
+    List<QuoteResponseDTO> getAllQuotes();
+
+    QuoteResponseDTO getRandomQuote();
     Quote getQuoteById(Long id);
 
-    Quote updateQuote(Quote quote);
+    QuoteResponseDTO getQuoteResponseDTOById(Long id);
+
+    QuoteRequestDTO updateQuote(Long userId, Long quoteId, QuoteRequestDTO quote);
+
+
 
     void deleteQuoteById(Long id);
 
-    List<Quote> getTop10();
+    List<QuoteResponseDTO> getTop10();
 
-    List<Quote> getFlop10();
+    List<QuoteResponseDTO> getFlop10();
 
-    Integer getRating(Long id);
+
 
 }
