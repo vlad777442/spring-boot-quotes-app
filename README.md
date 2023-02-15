@@ -1,5 +1,5 @@
 # spring-boot-quotes-app
-# Project requirements:
+## Project requirements:
 
 * source code should be published on https://github.com/;
 * Docker image should be published on https://hub.docker.com/r/vlad777442/spring-boot-quotes-app
@@ -17,5 +17,5 @@ The API should allow:
 Not requested: frontend part, authentication mechanism, and account rights management.
 
 
-# Deploy
+## Deploy
 ```docker-compose up```
